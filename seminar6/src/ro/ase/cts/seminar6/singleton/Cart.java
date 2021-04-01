@@ -9,33 +9,28 @@ import java.util.Map;
 import ro.ase.cts.seminar6.builder.Product;
 
 public class Cart implements Serializable{
-	private  static Cart instance=null;
-	
-	private  static Map<String,Cart> instances=null;
+	private static Map<String, Cart> instances = null;
 	private String type;
-	public ArrayList<ro.ase.cts.seminar6.builder.Product>products;
-	
+	public ArrayList<Product> products;
+
 	private Cart() {
-		instances=new HashMap<>();
-		products=new ArrayList<Product>();
+		products = new ArrayList<>();
 	}
-	
+
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+
 	public static synchronized Cart getInstance(String type) {
-		if(instances==null){
-			instances=new HashMap<>();
-			
+		if (instances == null) {
+			instances = new HashMap<>();
 		}
-		if(!instances.containsKey(type)) {
-			
-			Cart myCart=new Cart();
-			myCart.type=type;
+		if (!instances.containsKey(type)) {
+			Cart myCart = new Cart();
+			myCart.type = type;
 			instances.put(type, myCart);
 		}
 		return instances.get(type);
-	}
-	
-	public ArrayList<Product>getproducts(){
-		return products;
 	}
 	
 }
