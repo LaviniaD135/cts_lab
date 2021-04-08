@@ -1,7 +1,7 @@
 package ro.ase.cts.seminar6.builder;
 
-public class TechProduct implements Product{
-
+public class TechProduct implements Product, Cloneable {
+	
 	int id;
 	String productName;
 	String manufacturer;
@@ -47,7 +47,7 @@ public class TechProduct implements Product{
 
 	@Override
 	public String getDescription() {
-		return "this is a tech product";
+		return this.productName + " " + this.model;
 	}
 	
 	public static class TechProductBuilder{
@@ -81,9 +81,24 @@ public class TechProduct implements Product{
 			return this;
 		}
 		
+		
+
 		public TechProduct getProduct() {
 			return product;
 		}
 		
+		}
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		TechProduct newProduct = new TechProductBuilder(this.id)
+				.setDisplayType(this.displayType)
+				.setManufacturer(this.manufacturer)
+				.setModel(this.model)
+				.setName(this.productName)
+				.setPrice(this.price)
+				.getProduct();
+		
+		return newProduct;
 	}
+
 }

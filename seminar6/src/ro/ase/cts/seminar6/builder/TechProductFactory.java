@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class TechProductFactory extends AbstractProductFactory{
+
 	@Override
 	public Product makeProduct(int id) throws UnsupportedOperationException {
 		ArrayList<String> records = readRecordsFromFile("tech_products.csv");
@@ -28,7 +29,6 @@ public class TechProductFactory extends AbstractProductFactory{
 
 	@Override
 	public String getCalaog() {
-		
 		ArrayList<String> records = readRecordsFromFile("tech_products.csv");
 		StringBuilder builder = new StringBuilder();
 		for(String record: records) {
@@ -39,11 +39,18 @@ public class TechProductFactory extends AbstractProductFactory{
 			.append(productAttributes[3] + "\n");
 		}
 		return builder.toString();
-	}
-
-	private ArrayList<String>readRecordsFromFile(String fileName) {
-ArrayList<String> records = new ArrayList<String>();
 		
+	}
+	
+	private ArrayList<String> readRecordsFromFile(String fileName){
+		ArrayList<String> records = new ArrayList<String>();
+		System.out.println("Reading product records...");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		URL fileUrl = getClass().getResource(fileName);
 		File productsFile = new File(fileUrl.getPath());
 		try {
@@ -60,6 +67,8 @@ ArrayList<String> records = new ArrayList<String>();
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println("Finished fetching records...");
 		
 		return records;
 	}
