@@ -7,8 +7,8 @@ private ArrayList<YoutubeVideo> listvideos;
 	
 	public VideoDatabase() {
 		listvideos=new ArrayList<YoutubeVideo>();
-		listvideos.add(new YoutubeVideo(1, "Guta - Eu sunt capitanu", 10));
-		listvideos.add(new YoutubeVideo(2, "Cristu Dules - Zboara milioanele", 6));
+		listvideos.add(new YoutubeVideo(1, "blblabla", 10));
+		listvideos.add(new YoutubeVideo(2, "blaaaaaaa", 6));
 	}
 
 	public ArrayList<YoutubeVideo> getListvideos() {
